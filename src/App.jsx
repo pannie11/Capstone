@@ -7,6 +7,10 @@ import Home from './Components/Home'
 import SignUp from './Components/SignUp'
 import GetAllUsers from './Components/GetAllUsers'
 import Logout from './Components/Logout'
+import SingleProduct from './Components/SingleProduct'
+import AllProducts from './Components/AllProducts'
+import CartEndPoints from './Components/CartEndPoints'
+import AllCarts from './Components/AllCarts'
 
 export const api = 'https://fakestoreapi.com'
 
@@ -38,6 +42,11 @@ function App() {
       <Route path={'/logout'} element={<Logout token={token} setToken={setToken} />} />
       <Route path={'/signup'} element={<SignUp setToken={setToken} users={users} setUsers={setUsers}/>} />
       <Route path={'/users'} element={<GetAllUsers users={users} setUsers={setUsers}/>} />
+      <Route path={'/products/:productId'} element={<SingleProduct token={token} />} />
+      <Route path={'/products'} element={<AllProducts />} />
+      <Route path={'/cartoptions'} element={<CartEndPoints />} />
+      <Route path={'/carts'} element={<AllCarts />} />
+      <Route path={'/carts'} element={<AllCarts />} />
      </Routes>
     </>
   )
