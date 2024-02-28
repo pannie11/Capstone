@@ -10,7 +10,7 @@ export default function Navbar({ token }) {
       {token !== null && token !== undefined ? <></> : <Link to='/signup'>Sign Up</Link>}{' '}
       {/* {token !== null && token !== undefined ? <Link to='/account'>Account</Link> : <></>}{' '} */}
       <Link to='/users'>Users</Link>{' '}
-      <Link to='/cartoptions'>Cart endpoints</Link>
+      <Link to='/carts'>Carts</Link>
     </div>
   )
 }

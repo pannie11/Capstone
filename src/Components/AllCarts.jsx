@@ -1,11 +1,11 @@
 import { api } from "../App";
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 export default function AllCarts() {
     const [carts, setCarts] = useState([])
     const navigate = useNavigate()
-    const {cartId} = useParams()
+    const [limit, setLimit] = useState(null)
 
     useEffect(() => {
         async function getCarts() {
@@ -26,12 +26,35 @@ export default function AllCarts() {
         getCarts()
     }, [])
 
+    async function limitResults(e) {
+        e.preventDefault()
+
+        try {
+            const response = await fetch(`${api}/carts?limit=${limit}`, {
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const result = await response.json();
+
+            console.log(result)
+            setCarts(result)
+
+            } catch (error) {
+                console.error(error)
+            }
+        }
+
     return (
         <>
+        <form onSubmit={limitResults}>
+            <label>Limit results: </label>
+            <input type="number" onChange={(e) => setLimit(e.target.value)} value={limit} />
+            <button>Submit</button>
+        </form>
         {carts.map((cart) => {
             return (
                 <div key={cart.id}>
-                    <button onClick={() => navigate(`/carts/${cartId}`)}>User: {cart.userId}</button>
+                    <button onClick={() => navigate(`/carts/${cart.id}`)}>User Id: {cart.userId}  &ensp;|&ensp; Cart Id: {cart.id}</button>
+                    <p>Date: {cart.date}</p>
                    {cart.products.map((product) => {
                     return (
                         <div key={product.productId}>

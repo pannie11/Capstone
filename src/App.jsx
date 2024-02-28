@@ -11,6 +11,7 @@ import SingleProduct from './Components/SingleProduct'
 import AllProducts from './Components/AllProducts'
 import CartEndPoints from './Components/CartEndPoints'
 import AllCarts from './Components/AllCarts'
+import SingleCart from './Components/SingleCart'
 
 export const api = 'https://fakestoreapi.com'
 
@@ -44,9 +45,8 @@ function App() {
       <Route path={'/users'} element={<GetAllUsers users={users} setUsers={setUsers}/>} />
       <Route path={'/products/:productId'} element={<SingleProduct token={token} />} />
       <Route path={'/products'} element={<AllProducts />} />
-      <Route path={'/cartoptions'} element={<CartEndPoints />} />
       <Route path={'/carts'} element={<AllCarts />} />
-      <Route path={'/carts'} element={<AllCarts />} />
+      <Route path={'/carts/:cartId'} element={<SingleCart />} />
      </Routes>
     </>
   )
