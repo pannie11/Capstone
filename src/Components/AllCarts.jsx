@@ -48,10 +48,11 @@ export default function AllCarts() {
         e.preventDefault()
 
         try {
-            const response = await fetch(`${api}/carts?sort=${sortValue}`)
-            const result = await response.json()
+            const response1 = await fetch(`${api}/carts?sort=${sortValue}`)
+            const result1 = await response1.json()
 
-            setCarts(result)
+            setCarts(result1)
+
         } catch (error) {
             console.error(error)
         }

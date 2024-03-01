@@ -9,8 +9,8 @@ export default function Navbar({ token }) {
       {token ? <Link to='/logout'>Log out</Link> : <Link to='/login'>Login</Link>}{' '}
       {token !== null && token !== undefined ? <></> : <Link to='/signup'>Sign Up</Link>}{' '}
       {/* {token !== null && token !== undefined ? <Link to='/account'>Account</Link> : <></>}{' '} */}
-      <Link to='/users'>Users</Link>{' '}
-      <Link to='/carts'>Carts</Link>
+       <Link to='/users'>Users</Link>{' '}
+        {/* <Link to='/carts'>Carts</Link>  */}
     </div>
   )
 }

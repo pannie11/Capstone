@@ -10,10 +10,7 @@ export default function SignUp({ setToken }) {
     const [lastName, setLastName] = useState('')
     const [city, setCity] = useState('')
     const [street, setStreet] = useState('')
-    const [number, setNumber] = useState('')
     const [zipcode, setZipcode] = useState('')
-    const [lat, setLat] = useState('')
-    const [long, setLong] = useState('')
     const [phone, setPhone] = useState('')
 
     // const navigate = useNavigate();
@@ -36,12 +33,7 @@ export default function SignUp({ setToken }) {
                     address: {
                         city: city,
                         street: street,
-                        number: number,
                         zipcode: zipcode,
-                        geolocation: {
-                            lat: lat,
-                            long: long
-                        }
                     },
                     phone: phone
                  })
@@ -61,6 +53,7 @@ export default function SignUp({ setToken }) {
             // }
 
             // setToken(null)
+            if(result) alert('Sign up successful!')
         } catch (error) {
             console.error(error)
         }
@@ -92,16 +85,7 @@ export default function SignUp({ setToken }) {
                     Street: <input type='text' value={street} onChange={e => setStreet(e.target.value)} />
                 </label><br />
                 <label>
-                    Number <input type='number' value={number} onChange={e => setNumber(e.target.value)} />
-                </label><br />
-                <label>
                     Zipcode: <input type='number' value={zipcode} onChange={e => setZipcode(e.target.value)} />
-                </label><br />
-                <label>
-                    Latitude: <input type='number' value={lat} onChange={e => setLat(e.target.value)} />
-                </label><br />
-                <label>
-                    Longitude: <input type='number' value={long} onChange={e => setLong(e.target.value)} />
                 </label><br />
                 <label>
                     Phone: <input type='text' value={phone} onChange={e => setPhone(e.target.value)} />
