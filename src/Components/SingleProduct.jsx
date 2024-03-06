@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 export default function SingleProduct() {
     const { productId } = useParams();
     const [product, setProduct] = useState({})
-    const [rating, setRating] = useState({})
+    // const [rating, setRating] = useState({})
 
     useEffect(() => {
         async function getSingleProduct() {
@@ -15,7 +15,7 @@ export default function SingleProduct() {
 
                 console.log(result)
                 setProduct(result)
-                setRating(result.rating)
+                // setRating(result.rating)
             } catch (error) {
                 console.error(error)
             }
@@ -30,7 +30,9 @@ export default function SingleProduct() {
         <h4>${product.price}</h4>
         <p>Category: {product.category}</p>
         <p>Description: {product.description}</p>
-        <p>Rating: {rating.rate} Count: {rating.count}</p>
+        
+        {/* trouble */}
+        {/* <p>Rating: {product.rating.rate} Count: {product.rating.count}</p> */}
         </>
     )
 }

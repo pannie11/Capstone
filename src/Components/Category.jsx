@@ -1,35 +1,32 @@
-import { useState, useEffect } from "react"
-import { api } from "../App"
-import { useNavigate } from "react-router-dom"
+import { api } from "../App";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-export default function AllProducts() {
-    const [products, setProducts] = useState([])
-    const navigate = useNavigate()
+export default function Category() {
+    const [categoryProducts, setCategoryProducts] = useState([])
     const [sortValue, setSortValue] = useState('')
+    const {category} = useParams()
 
     useEffect(() => {
-        async function getProducts() {
+        async function getCategoryProducts() {
             try {
-                const response = await fetch(`${api}/products`, {
-                    headers: { 'Content-Type': 'application/json' }
-                });
-                const result = await response.json();
-
+                const response = await fetch(`${api}/products/category/${category}`)
+                const result = await response.json()
                 console.log(result)
-               setProducts(result)
 
-            } catch (error) {
-                console.error(error)
+                setCategoryProducts(result)
+            } catch(e) {
+                console.error(e)
             }
         }
-        getProducts()
-    }, [])
+        getCategoryProducts()
+    }, [category])
 
     async function sort(e) {
         e.preventDefault()
 
         try {
-            const response = await fetch(`${api}/products?sort=${sortValue}`)
+            const response = await fetch(`${api}/products/category/${category}?sort=${sortValue}`)
             const result = await response.json()
 
             if(sortValue === 'A-Z') {
@@ -71,37 +68,37 @@ export default function AllProducts() {
                 result.sort((a, b) => a.price - b.price).reverse()
             }
 
-            setProducts(result)
-
+            setCategoryProducts(result)
         } catch (error) {
             console.error(error)
         }
     }
 
+    console.log(categoryProducts)
+    
     return (
         <>
-         <form onSubmit={sort}>
-            <label>Sort by: </label>
-                <select onChange={(e) => setSortValue(e.target.value)} value={sortValue}>
-                    <option value='sort'></option>
-                    <option value="A-Z">A-Z</option>
-                    <option value="Z-A">Z-A</option>
-                    <option value="lowest-highest">Price: lowest-highest</option>
-                    <option value="highest-lowest">Price: highest-lowest</option>
-                </select>
-                <button>Sort</button>
-        </form>
-        {products.map((product) => {
+            <form onSubmit={sort}>
+                <label>Sort by: </label>
+                    <select onChange={(e) => setSortValue(e.target.value)} value={sortValue}>
+                        <option value='sort'></option>
+                        <option value="A-Z">A-Z</option>
+                        <option value="Z-A">Z-A</option>
+                        <option value="lowest-highest">Price: lowest-highest</option>
+                        <option value="highest-lowest">Price: highest-lowest</option>
+                    </select>
+                    <button>Sort</button>
+            </form>
+        {categoryProducts.map((categoryProduct) => {
             return (
-            <div key={product.id}>
-            <h3>{product.title}</h3>
-            <img src={product.image} />
-            <h4>${product.price}</h4>
-            <p>Category: {product.category}</p>
-            <p>Description: {product.description}</p>
-            <p>Rating: {product.rating.rate} Count: {product.rating.count}</p>
-            <button onClick={() => navigate(`/products/${product.id}`)}>Select product</button>
-            </div>  
+                <div key={categoryProduct.id}>
+                <h1>{categoryProduct.title}</h1>
+                <img src={categoryProduct.image} />
+                <h4>${categoryProduct.price}</h4>
+                <p>Category: {categoryProduct.category}</p>
+                <p>Description: {categoryProduct.description}</p>
+                <p>Rating: {categoryProduct.rating.rate} Count: {categoryProduct.rating.count}</p>
+                </div>
             )
         })}
         </>

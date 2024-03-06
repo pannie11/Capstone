@@ -9,9 +9,12 @@ import GetAllUsers from './Components/GetAllUsers'
 import Logout from './Components/Logout'
 import SingleProduct from './Components/SingleProduct'
 import AllProducts from './Components/AllProducts'
-import CartEndPoints from './Components/CartEndPoints'
+
 import AllCarts from './Components/AllCarts'
 import SingleCart from './Components/SingleCart'
+import ProductsBar from './Components/ProductsBar'
+import Categories from './Components/Categories'
+import Category from './Components/Category'
 // Anniezon
 export const api = 'https://fakestoreapi.com'
 
@@ -37,6 +40,7 @@ function App() {
   return (
     <>
      <Navbar token={token}/>
+     <ProductsBar />
      <Routes>
       <Route path={'/'} element={<Home />} />
       <Route path={'/login'} element={<Login token={token} setToken={setToken} />} />
@@ -45,6 +49,8 @@ function App() {
       <Route path={'/users'} element={<GetAllUsers users={users} setUsers={setUsers}/>} />
       <Route path={'/products/:productId'} element={<SingleProduct token={token} />} />
       <Route path={'/products'} element={<AllProducts />} />
+      {/* <Route path={'/products/categories'} element={<Categories />} /> */}
+      <Route path={'/products/category/:category'} element={<Category />} />
       {/* <Route path={'/carts'} element={<AllCarts />} />
       <Route path={'/carts/:cartId'} element={<SingleCart />} /> */}
      </Routes>
