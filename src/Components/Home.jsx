@@ -1,5 +1,8 @@
 export default function Home() {
     return (
-        <h1>Home page</h1>
+        <div id='home'>
+        <h3>Home page</h3>
+        {/* <h4>Get the </h4> */}
+        </div>
     )
 }

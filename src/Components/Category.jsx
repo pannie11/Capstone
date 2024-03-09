@@ -75,10 +75,12 @@ export default function Category() {
     }
 
     console.log(categoryProducts)
+    console.log(category)
     
     return (
         <>
-            <form onSubmit={sort}>
+        <h1 className='header'>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
+            <form className='form' onSubmit={sort}>
                 <label>Sort by: </label>
                     <select onChange={(e) => setSortValue(e.target.value)} value={sortValue}>
                         <option value='sort'></option>
@@ -89,18 +91,22 @@ export default function Category() {
                     </select>
                     <button>Sort</button>
             </form>
+        <div className='productsDisplay'>
         {categoryProducts.map((categoryProduct) => {
             return (
-                <div key={categoryProduct.id}>
-                <h1>{categoryProduct.title}</h1>
-                <img src={categoryProduct.image} />
-                <h4>${categoryProduct.price}</h4>
-                <p>Category: {categoryProduct.category}</p>
-                <p>Description: {categoryProduct.description}</p>
-                <p>Rating: {categoryProduct.rating.rate} Count: {categoryProduct.rating.count}</p>
+                <div className='product' key={categoryProduct.id}>
+                    <div className="product">
+                        <h3>{categoryProduct.title}</h3>
+                        <img src={categoryProduct.image} />
+                        <h4>${categoryProduct.price}</h4>
+                        <p>Category: {categoryProduct.category}</p>
+                        {/* <p>Description: {categoryProduct.description}</p> */}
+                        <p>Rating: {categoryProduct.rating.rate} Count: {categoryProduct.rating.count}</p>
+                    </div>
                 </div>
             )
         })}
+        </div>
         </>
     )
 }

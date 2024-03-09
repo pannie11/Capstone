@@ -80,7 +80,8 @@ export default function AllProducts() {
 
     return (
         <>
-         <form onSubmit={sort}>
+         <h1 className='header'>Products</h1>
+         <form className='form' onSubmit={sort}>
             <label>Sort by: </label>
                 <select onChange={(e) => setSortValue(e.target.value)} value={sortValue}>
                     <option value='sort'></option>
@@ -91,19 +92,21 @@ export default function AllProducts() {
                 </select>
                 <button>Sort</button>
         </form>
+        <div className='productsDisplay'>
         {products.map((product) => {
             return (
-            <div key={product.id}>
-            <h3>{product.title}</h3>
-            <img src={product.image} />
-            <h4>${product.price}</h4>
-            <p>Category: {product.category}</p>
-            <p>Description: {product.description}</p>
-            <p>Rating: {product.rating.rate} Count: {product.rating.count}</p>
-            <button onClick={() => navigate(`/products/${product.id}`)}>Select product</button>
+            <div className='product' key={product.id}>
+                    <h3>{product.title}</h3>
+                    <img src={product.image} />
+                    <h4>${product.price}</h4>
+                    <p>Category: {product.category}</p>
+                    {/* <p>Description: {product.description}</p> */}
+                    <p>Rating: {product.rating.rate} Count: {product.rating.count}</p>
+                    <button onClick={() => navigate(`/products/${product.id}`)}>Select product</button>
             </div>  
             )
         })}
+        </div>
         </>
     )
 }

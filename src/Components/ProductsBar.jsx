@@ -24,11 +24,11 @@ export default function ProductsBar() {
     }, [])
 
     return (
-        <div id="productsbar">
+        <div id='productsbar'>
             <Link to='/products'>All products</Link>
             {categories.map((category) => {
                 return (
-                 <Link className='link' key={category} to={`/products/category/${category}`}>{category}</Link>
+                 <Link className='link' key={category} to={`/products/category/${category}`}>{category.charAt(0).toUpperCase() + category.slice(1)}</Link>
                 )
             })}
         </div>
