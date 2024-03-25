@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { api } from "../App";
-// import { useNavigate } from "react-router-dom";
 
-export default function SignUp({ setToken }) {
+export default function SignUp() {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('');
@@ -12,8 +11,6 @@ export default function SignUp({ setToken }) {
     const [street, setStreet] = useState('')
     const [zipcode, setZipcode] = useState('')
     const [phone, setPhone] = useState('')
-
-    // const navigate = useNavigate();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -40,20 +37,14 @@ export default function SignUp({ setToken }) {
             });
 
             const result = await response.json();
-            console.log(result)
 
-            // setToken(result.token)
-
-            // if (password.length === 0) {
-            //     alert('Password cannot be empty')
-            // } else if (email && password) {
-            //     alert(result.message)
-            // } else {
-            //     navigate('/registered')
-            // }
-
-            // setToken(null)
-            if(result) alert('Sign up successful!')
+            if (email && username && password && firstName && lastName && city && street && zipcode && phone) {
+                alert('Sign up successful! Please log in.')
+                return result
+            } else {
+                alert('Incomplete form. Please complete all required fields to sign up.')
+            }
+          
         } catch (error) {
             console.error(error)
         }

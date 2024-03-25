@@ -2,10 +2,9 @@ import { api } from "../App"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 
-export default function SingleProduct() {
+export default function SingleProduct({addItem, token}) {
     const { productId } = useParams();
     const [product, setProduct] = useState({})
-    // const [rating, setRating] = useState({})
 
     useEffect(() => {
         async function getSingleProduct() {
@@ -13,9 +12,8 @@ export default function SingleProduct() {
                 const response = await fetch(`${api}/products/${productId}`)
                 const result = await response.json();
 
-                console.log(result)
                 setProduct(result)
-                // setRating(result.rating)
+       
             } catch (error) {
                 console.error(error)
             }
@@ -30,9 +28,11 @@ export default function SingleProduct() {
         <h4>${product.price}</h4>
         <p>Category: {product.category}</p>
         <p>Description: {product.description}</p>
-        
-        {/* trouble */}
-        {/* <p>Rating: {product.rating.rate} Count: {product.rating.count}</p> */}
+        {token ? <button onClick={() => {
+            addItem(product)
+            alert('Added to cart!');
+            }}>Add to cart
+        </button> : <></>}
         </>
     )
 }

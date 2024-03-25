@@ -2,12 +2,7 @@ import { useState, useEffect } from 'react'
 import { api } from '../App';
 import { useNavigate } from "react-router-dom";
 
-// set the token during login 
-// not a bad idea to save token state in top level
-// do an on page load thing, check to see if the token is there 
-// 
-export default function Login({ setToken, token }) {
-    const [username, setUsername] = useState('')
+export default function Login({ setToken, username, setUsername, setCart, users }) {
     const [password, setPassword] = useState('')
 
     const navigate = useNavigate();
@@ -23,18 +18,32 @@ export default function Login({ setToken, token }) {
             });
 
             const result = await response.json();
-            console.log(result)
-            console.log(result.token)
+
             setToken(result.token)
 
+            localStorage.setItem('currentuser', JSON.stringify(username))
+           
+            // if username changes, change the cart to the logged in user
+            // also set cart when you add items to the cart
+           const localCart = localStorage.getItem(username) ? JSON.parse(localStorage.getItem(username)) : []
+           setCart(localCart)
+
+            alert(`Welcome, ${username}!`)
+
+            navigate('/')
+
         } catch (error) {
+
+            const confirmedUsername = users.find(user => user.username === username)
+            const confirmedPassword = users.find(user => user.password === password)
+
+            if(!confirmedUsername || !confirmedPassword) alert('Invalid credentials.')
+            if(username.length === 0 || password.length === 0) alert('Username or password cannot be empty.')
+      
             console.error(error)
         }
     }
-    console.log(token)
 
-    // get item from local storage 
-    // clear local storage when you log out 
     return (
         <>
             <h2>Log in</h2>
@@ -56,3 +65,13 @@ export default function Login({ setToken, token }) {
 // test user
 // username: jimmie_k
 // password: klein*#%*
+// token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJ1c2VyIjoiamltbWllX2siLCJpYXQiOjE3MTA0NTI0MjZ9.USqH70r7p6mf3TnbcHxeDfxSpfWeuzLgQbdTrFP0Lho
+
+// test user 2
+// username: donero
+// password: ewedon
+// token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXIiOiJkb25lcm8iLCJpYXQiOjE3MTA0NTI0NjV9.u-_R6v9XbjhMBr832BMF6aNQeKbIdZwUwTlfx1FCVM8
+
+// test user 3
+// username: david_r
+// password: 3478*#54

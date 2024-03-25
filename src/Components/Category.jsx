@@ -1,18 +1,18 @@
 import { api } from "../App";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
-export default function Category() {
+export default function Category({addItem, token, sortValue, setSortValue}) {
     const [categoryProducts, setCategoryProducts] = useState([])
-    const [sortValue, setSortValue] = useState('')
+   
     const {category} = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         async function getCategoryProducts() {
             try {
                 const response = await fetch(`${api}/products/category/${category}`)
                 const result = await response.json()
-                console.log(result)
 
                 setCategoryProducts(result)
             } catch(e) {
@@ -31,16 +31,17 @@ export default function Category() {
 
             if(sortValue === 'A-Z') {
                 result.sort(function (a, b) {
-                    // compares the whole string values, but does it one letter at a time. if the letters are the ame value it goes to compare the next letters
+
+                    // compares the whole string values, but does it one letter at a time. if the letters are the same value it goes to compare the next letters
                     // a goes before b
                     if(a.title < b.title) {
                         return -1
                         
-                        // b goes before a 
+                    // b goes before a 
                     } else if(a.title > b.title) {
                         return 1
 
-                        // a and b stay in the same order
+                    // a and b stay in the same order
                     } else {
                         return 0
                     }
@@ -69,14 +70,12 @@ export default function Category() {
             }
 
             setCategoryProducts(result)
+
         } catch (error) {
             console.error(error)
         }
     }
 
-    console.log(categoryProducts)
-    console.log(category)
-    
     return (
         <>
         <h1 className='header'>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
@@ -95,13 +94,18 @@ export default function Category() {
         {categoryProducts.map((categoryProduct) => {
             return (
                 <div className='product' key={categoryProduct.id}>
-                    <div className="product">
+                    <div>
                         <h3>{categoryProduct.title}</h3>
                         <img src={categoryProduct.image} />
                         <h4>${categoryProduct.price}</h4>
                         <p>Category: {categoryProduct.category}</p>
-                        {/* <p>Description: {categoryProduct.description}</p> */}
                         <p>Rating: {categoryProduct.rating.rate} Count: {categoryProduct.rating.count}</p>
+                        <button onClick={() => navigate(`/products/${categoryProduct.id}`)}>Select product</button>
+                        {token ? <button onClick={() => {
+                            addItem(categoryProduct);
+                            alert('Added to cart!');
+                        }}>Add to cart
+                    </button> : <></>}
                     </div>
                 </div>
             )

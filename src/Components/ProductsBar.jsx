@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { useState, useEffect } from "react";
 import { api } from "../App";
 
-export default function ProductsBar() {
+export default function ProductsBar({setSortValue}) {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
@@ -13,8 +13,7 @@ export default function ProductsBar() {
                 });
                 const result = await response.json();
 
-                console.log(result)
-               setCategories(result)
+                setCategories(result)
 
             } catch (error) {
                 console.error(error)
@@ -28,7 +27,7 @@ export default function ProductsBar() {
             <Link to='/products'>All products</Link>
             {categories.map((category) => {
                 return (
-                 <Link className='link' key={category} to={`/products/category/${category}`}>{category.charAt(0).toUpperCase() + category.slice(1)}</Link>
+                 <Link className='link' key={category} to={`/products/category/${category}`} onClick={() => setSortValue('')}>{category.charAt(0).toUpperCase() + category.slice(1)}</Link>
                 )
             })}
         </div>
