@@ -55,7 +55,7 @@ export default function Cart({cart, setCart, username, addItem}) {
                 )
             })}
             <div>Total: ${cart.reduce((accumulation, currentItem) => accumulation + (currentItem.price * currentItem.quantity), 0)}</div>
-            <button onClick={() => navigate('/checkout')}>checkout</button>
+            <button onClick={() => navigate('/checkout')}>Check out</button>
         </>
     )
 }
