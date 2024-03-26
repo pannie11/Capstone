@@ -67,12 +67,10 @@ export default function Login({ setToken, username, setUsername, setCart, users 
 // test user
 // username: jimmie_k
 // password: klein*#%*
-// token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJ1c2VyIjoiamltbWllX2siLCJpYXQiOjE3MTA0NTI0MjZ9.USqH70r7p6mf3TnbcHxeDfxSpfWeuzLgQbdTrFP0Lho
 
 // test user 2
 // username: donero
 // password: ewedon
-// token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXIiOiJkb25lcm8iLCJpYXQiOjE3MTA0NTI0NjV9.u-_R6v9XbjhMBr832BMF6aNQeKbIdZwUwTlfx1FCVM8
 
 // test user 3
 // username: david_r
