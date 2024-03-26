@@ -38,7 +38,7 @@ export default function Checkout({ setCart, username, cart }) {
                     <form id='checkoutForm' onSubmit={handleSubmit}>
                         <div className="row">
 
-                            <div className="col-50">
+                            <div className="checkoutSection">
                                 <h2>Customer info</h2>
                                 <label className="formLabel">
                                     First name: <input type='text' value={firstName} onChange={e => setFirstName(e.target.value)} />
@@ -57,13 +57,13 @@ export default function Checkout({ setCart, username, cart }) {
                                 </label><br />
 
                                 <div className="row">
-                                    <div className="col-50">
+                                    <div className="checkoutSection">
                                         <label className="formLabel">
                                             State:  <input type='text' value={state} onChange={e => setState(e.target.value)} />
                                         </label><br />
                                     </div>
 
-                                    <div className="col-50">
+                                    <div className="checkoutSection">
                                         <label className="formLabel">
                                             Zipcode: <input type='number' value={zipcode} onChange={e => setZipcode(e.target.value)} />
                                         </label>
@@ -72,7 +72,7 @@ export default function Checkout({ setCart, username, cart }) {
                             </div>
                         </div>
 
-                        <div className="col-50">
+                        <div className="checkoutSection">
                             <div id='payment'>
                                 <h2>Payment info</h2>
                                 <label className="formLabel">
@@ -86,13 +86,13 @@ export default function Checkout({ setCart, username, cart }) {
                                 </label><br />
 
                                 <div className="row">
-                                    <div className="col-50">
+                                    <div className="checkoutSection">
                                         <label className="formLabel">
                                             Exp Year: <input type='number' value={expYear} onChange={e => setExpYear(e.target.value)} />
                                         </label><br />
                                     </div>
 
-                                    <div className="col-50">
+                                    <div className="checkoutSection">
                                         <label className="formLabel">
                                             CVV: <input type='number' value={cvv} onChange={e => setCvv(e.target.value)} />
                                         </label>
