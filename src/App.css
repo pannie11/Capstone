@@ -18,7 +18,7 @@
 }
 
 #navbar {
-  background-color: darkkhaki;
+  background-color: darkseagreen;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -206,7 +206,7 @@ select {
 
 .signup-row {
   display: inline-block;
-  padding: 5px;
+  padding: 1%;
 }
 
 #signup {
