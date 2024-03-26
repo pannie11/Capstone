@@ -57,7 +57,7 @@ export default function Login({ setToken, username, setUsername, setCart, users 
                         Password: <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
                     </label>
                     <br /> <br />
-                    <button>submit</button>
+                    <button id='lbutton'>Submit</button>
                 </form>
             </div>
         </>

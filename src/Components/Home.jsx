@@ -6,7 +6,7 @@ export default function Home() {
     return (
         <div id='home'>
             <section id='content'>
-                <h2>New Arrivals for Men and Women</h2>
+                <h1>New Arrivals for Men and Women</h1>
                 <button id='homepageButton' onClick={() => navigate('/products')}>Shop now</button>
             </section>
         </div>

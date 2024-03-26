@@ -7,6 +7,8 @@
 #root {
   margin: 0 auto;
   padding: 2rem;
+  padding-right: 0;
+  padding-left: 0;
   text-align: center;
 }
 
@@ -95,14 +97,15 @@ img {
 
 #homepageButton {
   height: 5vh;
+  font-size: larger;
 }
 
 #content {
-  padding: 15%;
+  padding: 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  float: left;
 }
 
 #singleProductImg {

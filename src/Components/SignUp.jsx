@@ -63,7 +63,7 @@ export default function SignUp() {
                         Username: <input type='text' value={username} onChange={e => setUsername(e.target.value)} />
                     </label><br />
                     <label className="formLabel">
-                        Password: <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
+                        Password: <input type='text' value={password} onChange={e => setPassword(e.target.value)} />
                     </label><br />
                 </div>
                 <div className="signup-row">
@@ -82,13 +82,13 @@ export default function SignUp() {
                         Street: <input type='text' value={street} onChange={e => setStreet(e.target.value)} />
                     </label><br />
                     <label className="formLabel">
-                        Zipcode: <input type='number' value={zipcode} onChange={e => setZipcode(e.target.value)} />
+                        Zipcode: <input type='text' value={zipcode} onChange={e => setZipcode(e.target.value)} />
                     </label><br />
                     <label className="formLabel">
                         Phone: <input type='text' value={phone} onChange={e => setPhone(e.target.value)} />
                     </label><br />
                 </div>
-                <div id='signup'><button id='sButton'>Sign up</button></div>
+                <div id='signup'><button id='sButton'>Register</button></div>
             </form>
         </>
     )

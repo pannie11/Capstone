@@ -65,7 +65,7 @@ export default function Checkout({ setCart, username, cart }) {
 
                                     <div className="checkoutSection">
                                         <label className="formLabel">
-                                            Zipcode: <input type='number' value={zipcode} onChange={e => setZipcode(e.target.value)} />
+                                            Zipcode: <input type='text' value={zipcode} onChange={e => setZipcode(e.target.value)} />
                                         </label>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@ export default function Checkout({ setCart, username, cart }) {
                                     Name on card: <input type='text' value={cname} onChange={e => setCname(e.target.value)} />
                                 </label><br />
                                 <label className="formLabel">
-                                    Card number: <input type='number' value={cnum} onChange={e => setCnum(e.target.value)} />
+                                    Card number: <input type='text' value={cnum} onChange={e => setCnum(e.target.value)} />
                                 </label><br />
                                 <label className="formLabel">
                                     Exp Month: <input type='text' value={expMonth} onChange={e => setExpMonth(e.target.value)} />
@@ -88,13 +88,13 @@ export default function Checkout({ setCart, username, cart }) {
                                 <div className="row">
                                     <div className="checkoutSection">
                                         <label className="formLabel">
-                                            Exp Year: <input type='number' value={expYear} onChange={e => setExpYear(e.target.value)} />
+                                            Exp Year: <input type='text' value={expYear} onChange={e => setExpYear(e.target.value)} />
                                         </label><br />
                                     </div>
 
                                     <div className="checkoutSection">
                                         <label className="formLabel">
-                                            CVV: <input type='number' value={cvv} onChange={e => setCvv(e.target.value)} />
+                                            CVV: <input type='text' value={cvv} onChange={e => setCvv(e.target.value)} />
                                         </label>
                                     </div>
                                 </div>
