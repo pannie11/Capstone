@@ -218,6 +218,7 @@ select {
 #sButton {
   padding-left: 200px;
   padding-right: 200px;
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 966px) {
