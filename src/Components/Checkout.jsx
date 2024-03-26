@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-export default function Checkout({setCart, username, cart}) {
+export default function Checkout({ setCart, username, cart }) {
     const navigate = useNavigate()
 
     const [firstName, setFirstName] = useState('')
@@ -20,7 +20,7 @@ export default function Checkout({setCart, username, cart}) {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        if(!firstName || !lastName || !email || !address || !city || !state || !zipcode || !cname || !cnum || !expMonth || !expYear || !cvv) {
+        if (!firstName || !lastName || !email || !address || !city || !state || !zipcode || !cname || !cnum || !expMonth || !expYear || !cvv) {
             alert('Please fill in all required fields.')
         } else {
             navigate('/orderplaced');
@@ -28,55 +28,82 @@ export default function Checkout({setCart, username, cart}) {
             localStorage.setItem(username, JSON.stringify(cart));
         }
     }
-    
+
     return (
         <>
             <h1>Checkout</h1>
-            <form id='checkoutForm' onSubmit={handleSubmit}>
-                <div id='customerInfo'>
-                    <h2>Customer info</h2>
-                    <label htmlFor='firstName'>
-                        First name: <input type='text' value={firstName} onChange={e => setFirstName(e.target.value)}/>
-                    </label><br />
-                    <label htmlFor='lastName'>
-                        Last name: <input type='text' value={lastName} onChange={e => setLastName(e.target.value)}/>
-                    </label><br />
-                    <label htmlFor='email'>
-                        Email: <input type='email' value={email} onChange={e => setEmail(e.target.value)}/>
-                    </label><br />
-                    <label htmlFor='address'>
-                        Address: <input type='text' value={address} onChange={e => setAddress(e.target.value)}/>
-                    </label><br />
-                    <label htmlFor='city'>
-                        City: <input type='text' value={city} onChange={e => setCity(e.target.value)}/>
-                    </label><br />
-                    <label htmlFor='state'>
-                        State:  <input type='text' value={state} onChange={e => setState(e.target.value)}/>
-                    </label><br/>
-                    <label htmlFor='zipcode'>
-                        Zipcode: <input type='number' value={zipcode} onChange={e => setZipcode(e.target.value)}/>
-                    </label>
+            <br />
+            <div className="row">
+                <div className="container">
+                    <form id='checkoutForm' onSubmit={handleSubmit}>
+                        <div className="row">
+
+                            <div className="col-50">
+                                <h2>Customer info</h2>
+                                <label className="formLabel">
+                                    First name: <input type='text' value={firstName} onChange={e => setFirstName(e.target.value)} />
+                                </label><br />
+                                <label className="formLabel">
+                                    Last name: <input type='text' value={lastName} onChange={e => setLastName(e.target.value)} />
+                                </label><br />
+                                <label className="formLabel">
+                                    Email: <input type='email' value={email} onChange={e => setEmail(e.target.value)} />
+                                </label><br />
+                                <label className="formLabel">
+                                    Address: <input type='text' value={address} onChange={e => setAddress(e.target.value)} />
+                                </label><br />
+                                <label className="formLabel">
+                                    City: <input type='text' value={city} onChange={e => setCity(e.target.value)} />
+                                </label><br />
+
+                                <div className="row">
+                                    <div className="col-50">
+                                        <label className="formLabel">
+                                            State:  <input type='text' value={state} onChange={e => setState(e.target.value)} />
+                                        </label><br />
+                                    </div>
+
+                                    <div className="col-50">
+                                        <label className="formLabel">
+                                            Zipcode: <input type='number' value={zipcode} onChange={e => setZipcode(e.target.value)} />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="col-50">
+                            <div id='payment'>
+                                <h2>Payment info</h2>
+                                <label className="formLabel">
+                                    Name on card: <input type='text' value={cname} onChange={e => setCname(e.target.value)} />
+                                </label><br />
+                                <label className="formLabel">
+                                    Card number: <input type='number' value={cnum} onChange={e => setCnum(e.target.value)} />
+                                </label><br />
+                                <label className="formLabel">
+                                    Exp Month: <input type='text' value={expMonth} onChange={e => setExpMonth(e.target.value)} />
+                                </label><br />
+
+                                <div className="row">
+                                    <div className="col-50">
+                                        <label className="formLabel">
+                                            Exp Year: <input type='number' value={expYear} onChange={e => setExpYear(e.target.value)} />
+                                        </label><br />
+                                    </div>
+
+                                    <div className="col-50">
+                                        <label className="formLabel">
+                                            CVV: <input type='number' value={cvv} onChange={e => setCvv(e.target.value)} />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button>Place order</button>
+                    </form>
                 </div>
-                <div id='payment'>
-                    <h2>Payment</h2>
-                    <label htmlFor='cname'>
-                        Name on card: <input type='text'value={cname} onChange={e => setCname(e.target.value)}/>
-                    </label><br/>
-                    <label htmlFor='cnum'>
-                        Card number: <input type='number' value={cnum} onChange={e => setCnum(e.target.value)}/>
-                    </label><br/>
-                    <label htmlFor='expMonth'>
-                        Exp Month: <input type='text' value={expMonth} onChange={e => setExpMonth(e.target.value)}/>
-                    </label><br/>
-                    <label htmlFor='expYear'>
-                        Exp Year: <input type='number' value={expYear} onChange={e => setExpYear(e.target.value)}/>
-                    </label><br/>
-                    <label htmlFor='cvv'>
-                        CVV: <input type='number' value={cvv} onChange={e => setCvv(e.target.value)}/>
-                    </label>
-                </div>
-                <button>Place order</button>
-            </form>
+            </div>
         </>
     )
 }

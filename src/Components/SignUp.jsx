@@ -19,7 +19,7 @@ export default function SignUp() {
             const response = await fetch(`${api}/users`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
+                body: JSON.stringify({
                     email: email,
                     username: username,
                     password: password,
@@ -33,7 +33,7 @@ export default function SignUp() {
                         zipcode: zipcode,
                     },
                     phone: phone
-                 })
+                })
             });
 
             const result = await response.json();
@@ -44,7 +44,7 @@ export default function SignUp() {
             } else {
                 alert('Incomplete form. Please complete all required fields to sign up.')
             }
-          
+
         } catch (error) {
             console.error(error)
         }
@@ -52,51 +52,45 @@ export default function SignUp() {
 
     return (
         <>
-            <h2>Sign Up</h2>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Email: <input type='email' value={email} onChange={e => setEmail(e.target.value)} />
-                </label><br />
-                <label>
-                    Username: <input type='text' value={username} onChange={e => setUsername(e.target.value)} />
-                </label><br />
-                <label>
-                    Password: <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
-                </label><br /> 
-                <label>
-                    First name: <input type='text' value={firstName} onChange={e => setFirstName(e.target.value)} />
-                </label><br />
-                <label>
-                    Last name: <input type='text' value={lastName} onChange={e => setLastName(e.target.value)} />
-                </label><br />
-                <label>
-                    City: <input type='text' value={city} onChange={e => setCity(e.target.value)} />
-                </label><br />
-                <label>
-                    Street: <input type='text' value={street} onChange={e => setStreet(e.target.value)} />
-                </label><br />
-                <label>
-                    Zipcode: <input type='number' value={zipcode} onChange={e => setZipcode(e.target.value)} />
-                </label><br />
-                <label>
-                    Phone: <input type='text' value={phone} onChange={e => setPhone(e.target.value)} />
-                </label><br />
-                <button>submit</button>
+            <h1>Sign Up</h1>
+            <br />
+            <form onSubmit={handleSubmit} className="container">
+                <div className="signup-row">
+                    <label className="formLabel">
+                        Email: <input type='email' value={email} onChange={e => setEmail(e.target.value)} />
+                    </label><br />
+                    <label className="formLabel">
+                        Username: <input type='text' value={username} onChange={e => setUsername(e.target.value)} />
+                    </label><br />
+                    <label className="formLabel">
+                        Password: <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
+                    </label><br />
+                </div>
+                <div className="signup-row">
+                    <label className="formLabel">
+                        First name: <input type='text' value={firstName} onChange={e => setFirstName(e.target.value)} />
+                    </label><br />
+                    <label className="formLabel">
+                        Last name: <input type='text' value={lastName} onChange={e => setLastName(e.target.value)} />
+                    </label><br />
+                    <label className="formLabel">
+                        City: <input type='text' value={city} onChange={e => setCity(e.target.value)} />
+                    </label><br />
+                </div>
+                <div className="signup-row">
+                    <label className="formLabel">
+                        Street: <input type='text' value={street} onChange={e => setStreet(e.target.value)} />
+                    </label><br />
+                    <label className="formLabel">
+                        Zipcode: <input type='number' value={zipcode} onChange={e => setZipcode(e.target.value)} />
+                    </label><br />
+                    <label className="formLabel">
+                        Phone: <input type='text' value={phone} onChange={e => setPhone(e.target.value)} />
+                    </label><br />
+                </div>
+                <div id='signup'><button id='sButton'>Sign up</button></div>
             </form>
         </>
     )
 }
 
-// test user:
-// email: bb@bb.com
-// username: b
-// password: c
-// first name: blanton
-// last name: xlinton
-// city: citi 
-// street: citi street
-// number: 3
-// zipcode: 33333
-// lat: 25.34543
-// long: -9.49925
-// phone: 333-333-3333

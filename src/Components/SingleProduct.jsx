@@ -2,7 +2,7 @@ import { api } from "../App"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 
-export default function SingleProduct({addItem, token}) {
+export default function SingleProduct({ addItem, token }) {
     const { productId } = useParams();
     const [product, setProduct] = useState({})
 
@@ -13,7 +13,7 @@ export default function SingleProduct({addItem, token}) {
                 const result = await response.json();
 
                 setProduct(result)
-       
+
             } catch (error) {
                 console.error(error)
             }
@@ -23,16 +23,21 @@ export default function SingleProduct({addItem, token}) {
 
     return (
         <>
-        <h1>{product.title}</h1>
-        <img src={product.image} />
-        <h4>${product.price}</h4>
-        <p>Category: {product.category}</p>
-        <p>Description: {product.description}</p>
-        {token ? <button onClick={() => {
-            addItem(product)
-            alert('Added to cart!');
+            <h1>{product.title}</h1>
+            <br />
+            <img id='singleProductImg' src={product.image} />
+            <br />
+            <h2>${product.price}</h2>
+            <br />
+            <p className="singleProductp">Category: {product.category}</p>
+            <br />
+            <p className="singleProductp">Description: {product.description}</p>
+            <br />
+            {token ? <button id='singleProductButton' onClick={() => {
+                addItem(product)
+                alert('Added to cart!');
             }}>Add to cart
-        </button> : <></>}
+            </button> : <></>}
         </>
     )
 }

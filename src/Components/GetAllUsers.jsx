@@ -1,7 +1,7 @@
 import { api } from "../App"
-import {  useEffect } from "react"
+import { useEffect } from "react"
 
-export default function GetAllUsers({ setUsers}) {
+export default function GetAllUsers({ setUsers }) {
     useEffect(() => {
         async function getUsers() {
             try {
@@ -9,8 +9,6 @@ export default function GetAllUsers({ setUsers}) {
                     headers: { 'Content-Type': 'application/json' }
                 });
                 const result = await response.json();
-
-                console.log(result)
                 setUsers(result)
 
             } catch (error) {

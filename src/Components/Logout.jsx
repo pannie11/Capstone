@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Logout({setToken}) {
+export default function Logout({ setToken }) {
     const navigate = useNavigate()
 
     useEffect(() => {

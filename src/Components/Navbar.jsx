@@ -9,7 +9,8 @@ export default function Navbar({ token }) {
         <li><Link className='link' to='/'>Home</Link></li>
         <li>{token ? <Link className='link' to='/logout'>Log out</Link> : <Link className='link' to='/login'>Login</Link>}</li>
         <li>{token !== null && token !== undefined ? <></> : <Link className='link' to='/signup'>Sign Up</Link>}</li>
-        <li id="cart">{token !== null && token !== undefined ? <Link to='/cart'><ShoppingCart/></Link> : <></>}</li>
+        {' '}
+        <li id="cartIcon">{token !== null && token !== undefined ? <Link to='/cart'><ShoppingCart /></Link> : <></>}</li>
       </ul>
     </div>
   )

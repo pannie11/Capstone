@@ -5,26 +5,23 @@
 }
 
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
 .link {
-margin-left: 10px;
-margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #navbar {
-  background-color: #ececec;
+  background-color: darkkhaki;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 999;
   margin: 0;
   padding: 20px 5%;
-  box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
   position: fixed;
   left: 0;
@@ -35,7 +32,6 @@ margin-right: 10px;
 #name {
   color: lightblue;
   border-bottom: 4px solid skyblue;
-  margin-left: -4%;
 }
 
 li {
@@ -44,16 +40,15 @@ li {
 }
 
 ul {
-  margin-right: -20px;
   font-size: 30px;
 }
 
 #productsbar {
-  background-color:#9fd3c7; 
+  background-color: #9fd3c7;
   display: block;
   margin-left: 0;
   margin-right: 0;
-  margin-top: -4.2%;
+  margin-top: -4.3%;
   padding: 10px;
   box-sizing: border-box;
   position: fixed;
@@ -67,8 +62,8 @@ ul {
 }
 
 img {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 .productsDisplay {
@@ -77,27 +72,156 @@ img {
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-} 
+}
 
 .product {
-  border: 1px solid black;
+  border: 3px solid cornflowerblue;
   width: 375px;
   height: 370px;
   font-size: 14px;
-  padding: 5%;
-  /* overflow: auto; */
-} 
+  padding-top: 2%;
+  background-color: cadetblue;
+}
 
-/* #home {
-  background-image: url(https://www.searchenginejournal.com/wp-content/uploads/2022/08/google-shopping-ads-6304dccb7a49e-sej-760x400.webp);
+#home {
+  height: 100%;
+  width: 100vw;
+  background: url(https://www.searchenginejournal.com/wp-content/uploads/2022/08/google-shopping-ads-6304dccb7a49e-sej.png);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
-  width: 100vw
-} */
+}
+
+#homepageButton {
+  height: 5vh;
+}
+
+#content {
+  padding: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#singleProductImg {
+  width: 300px;
+  height: 300px;
+}
+
+.singleProductp {
+  font-size: 30px;
+}
+
+#singleProductButton {
+  padding: 20px;
+  width: 15%;
+  font-size: 25px;
+}
+
+#cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+#cart-product {
+  border: 4px solid mediumaquamarine;
+  width: 375px;
+  height: 370px;
+  font-size: 14px;
+  padding: 20px;
+  background-color: cadetblue
+}
+
+#total,
+#checkoutButton {
+  margin: 1%;
+}
+
+#total {
+  font-size: x-large;
+}
+
+button {
+  margin: 5px;
+}
+
+#deleteItemButton {
+  margin-top: -5%;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-50 {
+  -ms-flex: 50%;
+  flex: 50%;
+}
+
+.col-50 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: skyblue;
+  padding: 5px 20px 15px 20px;
+  border-radius: 3px;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: darkslategray
+}
+
+.formLabel {
+  padding: 10px;
+  display: block;
+  font-size: larger;
+  margin-bottom: -10%;
+  font-weight: 600;
+}
+
+select {
+  background-color: darkslategray
+}
+
+.login {
+  padding: 15px;
+  margin-bottom: -10%;
+  font-size: xx-large;
+}
+
+.signup-row {
+  display: inline-block;
+  padding: 5px;
+}
+
+#signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#sButton {
+  padding-left: 200px;
+  padding-right: 200px;
+}
 
 @media screen and (max-width: 966px) {
   #productsbar {
-      margin-top: -8.4%;
+    margin-top: -8.4%;
   }
 }
